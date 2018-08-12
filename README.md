@@ -3,7 +3,8 @@ Sybaris patcher that makes NTR lock less restrictive
 
 This patcher enables (yotogi and free mode) skills and facilities that are locked by NTRlock while keeping NTR events hidden.
 
-
+# Download
+https://github.com/Neerhom/COM3D2.NTRlight.Patcher/releases
 
 # Pre-requisites
 [Mono.Cecil.Inject](https://github.com/denikson/Mono.Cecil.Inject) (included in release)
@@ -16,5 +17,5 @@ For COM3D2 following are known:
 
 [Sybaris 2.2](https://ux.getuploader.com/cm3d2_j/download/154) is also a possible option, the functionality is not confirmed nor it will be as I'm not fan of it.
 
-#Installaiton
+# Installaiton
 Put archive contents into Sybaris folder

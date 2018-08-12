@@ -1,0 +1,4 @@
+# Required assemblies
+Assembly-CSharp.dll found in COM3D2x64_Data/Managed
+Mono.Cecil v0.9.6.0 can be managed throug NuGet packages
+Momo.Ceeil.Inject https://github.com/denikson/Mono.Cecil.Inject also included in release

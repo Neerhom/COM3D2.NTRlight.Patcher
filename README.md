@@ -8,6 +8,7 @@ https://github.com/Neerhom/COM3D2.NTRlight.Patcher/releases
 
 # Pre-requisites
 [Mono.Cecil.Inject](https://github.com/denikson/Mono.Cecil.Inject) (included in release)
+
 The patcher requires any plugin/patcher loader that is capable of loading Sybaris patchers. 
 For COM3D2 following are known:
 

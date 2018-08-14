@@ -1,49 +1,50 @@
-﻿
+using System;
 
 namespace COM3D2.NTRlight.Patcher
 {
     public static class Hooks
     {
 
-       static bool NTR_lock_base = false;
-
-        static bool NTR_lock_base_got = false;
+       static bool fakereturn = false;
 
 
-        //  disable NTR lock  if it's on
-        public static void Enable_ntr()
+
+
+        //  fakes return of getter for lockNTRPlay
+        public static bool FakeLock( out bool result)
 
         {
-            // get current lock status. there is probably a better place to get it,
-            // but this way i don't have to worry about late acquisition
-            if (NTR_lock_base_got == false)
+            result = false;
+
+            if (fakereturn)
             {
-                
-                NTR_lock_base = GameMain.Instance.CharacterMgr.status.lockNTRPlay;
-                NTR_lock_base_got = true;
+                fakereturn = false;
+                return true;
             }
+            else { return false; }
+        }
+
+        // the method is injected into a set of target method that call getter of lockNTRPlay (PlayerStatus.Status.get_lockNTRPlay())
+        // this method allows changing of it's retrun
+        public static void Allow_faking()
+        {
+            fakereturn = true;
+        }
+
+        // toggle NTRlock on permanently. note, this does not disable core functionality of the patcher
+        
+
+        public static void LockON()
+        {
+            GameMain.Instance.CharacterMgr.status.lockNTRPlay = true;
+            Console.WriteLine("NTR lock is set to true");
+        }
+        // toggle NTRlock off permanently.
+        public static void LockOFF()
+        {
            
-            // temporary disable NTR lock before the method is run
-            if (NTR_lock_base)
-            {
-              
-                GameMain.Instance.CharacterMgr.status.lockNTRPlay = false;
-               
-            }
-            
-
+            GameMain.Instance.CharacterMgr.status.lockNTRPlay = false;
+            Console.WriteLine("NTR lock is set to false");
         }
-
-        // enable NTR lock back once target method finished it's thing
-        public static void Disable_ntr()
-        {
-            if (NTR_lock_base)
-            {
-
-                GameMain.Instance.CharacterMgr.status.lockNTRPlay = true;
-
-            }
-        }
-
     }
 }
